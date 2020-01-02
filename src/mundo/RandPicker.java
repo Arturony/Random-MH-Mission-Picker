@@ -145,7 +145,10 @@ public class RandPicker {
 		
 		for (Mision m : misions) 
 		{
-			if(game.equalsIgnoreCase(m.getGame()) || monster.equalsIgnoreCase(m.getMonster()) || dif.equalsIgnoreCase(m.getDificulty()) || place.equalsIgnoreCase(m.getPlace()))
+			if((m.getGame().contains(game) && !game.equals("")) || game.equalsIgnoreCase(m.getGame()) || 
+				(m.getMonster().contains(monster) && !monster.equals("")) || monster.equalsIgnoreCase(m.getMonster()) || 
+				(m.getDificulty().contains(dif) && !dif.equals("")) || dif.equalsIgnoreCase(m.getDificulty()) || 
+				(m.getPlace().contains(place) && !place.equals("")) || place.equalsIgnoreCase(m.getPlace()))
 			{
 				rand.add(m);
 			}
