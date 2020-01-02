@@ -3,6 +3,7 @@ package interfaz;
 import java.awt.Font;
 import java.awt.GridLayout;
 
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -10,11 +11,11 @@ import javax.swing.SwingConstants;
 
 import mundo.Mision;
 
-public class PanelMostrarResult extends JPanel
+public class PanelAddMision extends JPanel
 {
 	private JLabel labelGame;
 	
-	private JTextField txtGame;
+	private JComboBox<String> txtGame;
 	
 	private JLabel labelName;
 	
@@ -26,11 +27,11 @@ public class PanelMostrarResult extends JPanel
 	
 	private JLabel labelDif;
 	
-	private JTextField txtDif;
+	private JComboBox<String> txtDif;
 	
 	private JLabel labelOrg;
 	
-	private JTextField txtOrg;
+	private JComboBox<String> txtOrg;
 	
 	private JLabel labelMonster;
 	
@@ -38,9 +39,9 @@ public class PanelMostrarResult extends JPanel
 	
 	private JLabel labelObj;
 	
-	private JTextField txtObj;
+	private JComboBox<String> txtObj;
 	
-	public PanelMostrarResult(Mision m) 
+	public PanelAddMision() 
 	{
 		setLayout(new GridLayout(7, 2, 10,10));
 		
@@ -48,9 +49,7 @@ public class PanelMostrarResult extends JPanel
         labelGame.setFont( labelGame.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelGame );
         
-        txtGame = new JTextField( 2 );
-        txtGame.setEditable(false);
-        txtGame.setText(m.getGame());
+        txtGame = new JComboBox<String>(Mision.games);
         add( txtGame );
         
 		labelName = new JLabel( "Name: ", SwingConstants.CENTER );
@@ -58,8 +57,6 @@ public class PanelMostrarResult extends JPanel
         add( labelName );
         
         txtName = new JTextField( 2 );
-        txtName.setEditable(false);
-        txtName.setText(m.getName());
         add( txtName );
         
 		labelPlace = new JLabel( "Place: ", SwingConstants.CENTER );
@@ -67,26 +64,20 @@ public class PanelMostrarResult extends JPanel
         add( labelPlace );
         
         txtPlace = new JTextField( 2 );
-        txtPlace.setEditable(false);
-        txtPlace.setText(m.getPlace());
         add( txtPlace );
         
 		labelDif = new JLabel( "Dificulty: ", SwingConstants.CENTER );
 		labelDif.setFont( labelDif.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelDif );
         
-        txtDif = new JTextField( 2 );
-        txtDif.setEditable(false);
-        txtDif.setText(m.getDificulty());
+        txtDif = new JComboBox<String>(Mision.difics);
         add( txtDif );
         
 		labelOrg = new JLabel( "Organization: ", SwingConstants.CENTER );
 		labelOrg.setFont( labelOrg.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelOrg );
         
-        txtOrg = new JTextField( 2 );
-        txtOrg.setEditable(false);
-        txtOrg.setText(m.getOrganization());
+        txtOrg = new JComboBox<String>(Mision.org);
         add( txtOrg );
         
 		labelMonster = new JLabel( "Monster: ", SwingConstants.CENTER );
@@ -94,19 +85,49 @@ public class PanelMostrarResult extends JPanel
         add( labelMonster );
         
         txtMonster = new JTextField( 2 );
-        txtMonster.setEditable(false);
-        txtMonster.setText(m.getMonster());
         add( txtMonster );
         
 		labelObj = new JLabel( "Objetive: ", SwingConstants.CENTER );
 		labelObj.setFont( labelObj.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelObj );
         
-        txtObj = new JTextField( 2 );
-        txtObj.setEditable(false);
-        txtObj.setText(m.getObjetive());
+        txtObj = new JComboBox<String>(Mision.obj);
         add( txtObj );
         
 	}
 	
+	public String getGame()
+	{
+		return (String) txtGame.getSelectedItem();
+	}
+	
+	public String getName()
+	{
+		return txtName.getText();
+	}
+	
+	public String getPlace()
+	{
+		return txtPlace.getText();
+	}
+	
+	public String getDificulty()
+	{
+		return (String) txtDif.getSelectedItem();
+	}
+	
+	public String getOrg()
+	{
+		return (String) txtOrg.getSelectedItem();
+	}
+	
+	public String getMonster()
+	{
+		return txtMonster.getText();
+	}
+	
+	public String getObj()
+	{
+		return (String) txtObj.getSelectedItem();
+	}
 }

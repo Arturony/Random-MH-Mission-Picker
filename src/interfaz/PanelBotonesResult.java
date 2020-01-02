@@ -20,7 +20,7 @@ public class PanelBotonesResult extends JPanel implements ActionListener
     /**
      * El comando para cancelar la creación de un disco
      */
-    private static final String REINICIAR = "Reiniciar";
+    private static final String AGREGAR = "Agregar";
 
     // -----------------------------------------------------------------
     // Atributos
@@ -54,13 +54,13 @@ public class PanelBotonesResult extends JPanel implements ActionListener
 
         ventana = dcs;
 
-        botonVolver = new JButton( "Volver" );
+        botonVolver = new JButton( "Back" );
         botonVolver.setActionCommand( VOLVER );
         botonVolver.addActionListener( this );
         add( botonVolver );
         /*
-        botonReiniciar = new JButton( "Cancelar" );
-        botonReiniciar.setActionCommand( REINICIAR );
+        botonReiniciar = new JButton( "Agregar" );
+        botonReiniciar.setActionCommand( AGREGAR );
         botonReiniciar.addActionListener( this );
         add( botonReiniciar );
         */
@@ -82,6 +82,10 @@ public class PanelBotonesResult extends JPanel implements ActionListener
         if( VOLVER.equals( comando ) )
         {
             ventana.restart();
+        }
+        else if(AGREGAR.equals(comando))
+        {
+        	
         }
 
     }

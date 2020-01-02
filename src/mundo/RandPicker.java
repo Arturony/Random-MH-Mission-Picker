@@ -165,9 +165,12 @@ public class RandPicker {
 			return getRand();
 	}
 
-	public void agregarMision(String name, String monster, String place, String dificulty, String organization, String objetive, String game)
+	public boolean agregarMision(String name, String monster, String place, String dificulty, String organization, String objetive, String game)
 	{
+		int ant = misions.size();
 		misions.add(new Mision(name, monster, place, dificulty, organization, objetive, game));
+		int desp = misions.size();
+		return (desp-ant) == 1;
 	}
 
 	public void deserialize() throws Exception

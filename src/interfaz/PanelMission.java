@@ -2,12 +2,12 @@ package interfaz;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import mundo.Mision;
 
-
-public class PanelBusqueda extends JPanel
+public class PanelMission extends JPanel
 {
 
 	// -----------------------------------------------------------------
@@ -26,12 +26,12 @@ public class PanelBusqueda extends JPanel
     /**
      * Es el panel con los datos para crear el nuevo disco
      */
-    private PanelCrearBusqueda panelDatos;
+    private PanelAddMision panelDatos;
 
     /**
      * Es el panel con los botones para guardar el disco
      */
-    private PanelBotonesBusqueda panelBotones;
+    private PanelBotonesMision panelBotones;
 
     // -----------------------------------------------------------------
     // Constructores
@@ -41,12 +41,12 @@ public class PanelBusqueda extends JPanel
      * Construye el diálogo
      * @param id es una referencia a la clase principal de la interfaz
      */
-    public PanelBusqueda( InterfazMH id )
+    public PanelMission( InterfazMH id )
     {
         principal = id;
 
-        panelDatos = new PanelCrearBusqueda();
-        panelBotones = new PanelBotonesBusqueda(this);
+        panelDatos = new PanelAddMision();
+        panelBotones = new PanelBotonesMision(this);
         
         setLayout(new BorderLayout());
         add( panelDatos, BorderLayout.CENTER );
@@ -61,28 +61,28 @@ public class PanelBusqueda extends JPanel
     /**
      * Guarda el disco
      */
-    public void crearBusqueda( )
+    public void crearMision( )
     {
-        boolean parametersOk = true;
+
         String game = panelDatos.getGame();
         String monster = panelDatos.getMonster();
         String dificulty = panelDatos.getDificulty();
         String place = panelDatos.getPlace();
-        if(game.equals(Mision.games[0]))
+        String name = panelDatos.getName();
+        String org = panelDatos.getOrg();
+        String obj = panelDatos.getObj();
+
+        if(principal.addMission(name, monster, place, dificulty, org, obj, game) == true)
         {
-        	game = "";
+        	JOptionPane.showMessageDialog(this.principal, "Mission added succesfully");
         }
-        if(dificulty.equals(Mision.difics[0]))
-        {
-        	dificulty = "";
-        }
-        
-        principal.showRandMision(game, monster, dificulty, place);
+        principal.revalidate();
     }
     
-    public void restart( )
+    public void volver()
     {
-    	principal.showAddMission();
+    	principal.showSearchFromAdd();
     }
     
+	
 }

@@ -19,7 +19,7 @@ public class PanelBotonesBusqueda extends JPanel implements ActionListener{
     /**
      * El comando para cancelar la creación de un disco
      */
-    private static final String REINICIAR = "Reiniciar";
+    private static final String AGREGAR = "Agregar";
 
     // -----------------------------------------------------------------
     // Atributos
@@ -53,16 +53,15 @@ public class PanelBotonesBusqueda extends JPanel implements ActionListener{
 
         ventana = dcs;
 
-        botonCrearBusqueda = new JButton( "Buscar" );
+        botonCrearBusqueda = new JButton( "Search" );
         botonCrearBusqueda.setActionCommand( CREAR_BUSQUEDA );
         botonCrearBusqueda.addActionListener( this );
         add( botonCrearBusqueda );
-        /*
-        botonReiniciar = new JButton( "Cancelar" );
-        botonReiniciar.setActionCommand( REINICIAR );
+        
+        botonReiniciar = new JButton( "Add" );
+        botonReiniciar.setActionCommand( AGREGAR );
         botonReiniciar.addActionListener( this );
         add( botonReiniciar );
-        */
 
     }
 
@@ -81,6 +80,10 @@ public class PanelBotonesBusqueda extends JPanel implements ActionListener{
         if( CREAR_BUSQUEDA.equals( comando ) )
         {
             ventana.crearBusqueda( );
+        }
+        else if(AGREGAR.equals(comando))
+        {
+        	ventana.restart();
         }
 
     }

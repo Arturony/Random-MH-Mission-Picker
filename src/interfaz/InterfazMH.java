@@ -2,6 +2,9 @@ package interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -21,6 +24,8 @@ public class InterfazMH extends JFrame
 	
 	private PanelResultado resultado;
 	
+	private PanelMission addMission;
+	
 	public InterfazMH() 
 	{
 		try 
@@ -30,14 +35,14 @@ public class InterfazMH extends JFrame
 		} 
 		catch (Exception e) 
 		{
-			JOptionPane.showMessageDialog(this, "Se ha presentado un error al cargar los datos");
+			JOptionPane.showMessageDialog(this, "There has been an error reading the data file");
 			return;
 		}
 		
 		setLayout (new BorderLayout());          
         add( busqueda, BorderLayout.CENTER );
         
-        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        setDefaultCloseOperation( JFrame.HIDE_ON_CLOSE);
         setLocation (50,50);
         setResizable( false );
         setBackground( Color.WHITE );
@@ -51,7 +56,7 @@ public class InterfazMH extends JFrame
 		Mision m = mundo.getRandParams(game, monster, dificulty, place);
 		if(m == null)
 		{
-			JOptionPane.showMessageDialog(this, "Los datos ingresados no son validos");
+			JOptionPane.showMessageDialog(this, "The data is not valid");
 		}
 		else
 		{
@@ -62,6 +67,19 @@ public class InterfazMH extends JFrame
 		}
 	}
 	
+	public void showAddMission()
+	{
+		addMission = new PanelMission(this);
+		this.remove(busqueda);
+		this.add(addMission, BorderLayout.CENTER);
+		this.revalidate();
+	}
+	
+	public boolean addMission(String name, String monster, String place, String dificulty, String organization, String objetive, String game)
+	{
+		return this.mundo.agregarMision(name, monster, place, dificulty, organization, objetive, game);
+	}
+	
 	public void showSearch()
 	{
 		busqueda = new PanelBusqueda(this);
@@ -70,6 +88,15 @@ public class InterfazMH extends JFrame
 		this.revalidate();
 	}
 	
+	public void showSearchFromAdd()
+	{
+		busqueda = new PanelBusqueda(this);
+		this.remove(addMission);
+		this.add(busqueda, BorderLayout.CENTER);
+		this.revalidate();
+	}
+	
+	
 	public static void main( String[] args )
     {
         try
@@ -77,6 +104,12 @@ public class InterfazMH extends JFrame
             UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName( ) );
             InterfazMH interfaz = new InterfazMH( );
             interfaz.setVisible( true );
+            interfaz.addComponentListener(new ComponentAdapter() {
+                public void componentHidden(ComponentEvent e) {
+                    interfaz.mundo.serialize();
+                    ((JFrame)(e.getComponent())).dispose();
+                }
+            });
         }
         catch( Exception e )
         {
