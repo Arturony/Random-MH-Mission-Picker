@@ -23,7 +23,7 @@ import data_stuctures.ResizingArrayBag;
 
 public class RandPicker {
 	
-	private static String datas = "./data/json/missions.json";
+	private static String datas = "../../random_MH/data/json/missions.json";
 	
 	private ResizingArrayBag<Mision> misions;
 	
