@@ -5,12 +5,6 @@ import java.util.Comparator;
 public class Mision implements Comparable<Mision>
 {
 	
-	public static String[] games = {"Cualquiera","Freedom", "Freedom Unite", "Portable 3rd", "Tri", "4 Ultimate", "Generations", "Generations Ultimate", "World", "Iceborne"};
-	
-	public static String[] difics = {"Cualquiera","1*","2*","3*","4*", "5*", "6*", "7*", "8*", "9*", "10*", "G1", "G2", "G3", "G4"};
-	
-	public static String[] places = {};
-	
 	private String name;
 	
 	private String monster;

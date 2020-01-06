@@ -53,7 +53,7 @@ public class PanelBotonesBusqueda extends JPanel implements ActionListener{
 
         ventana = dcs;
 
-        botonCrearBusqueda = new JButton( "Buscar" );
+        botonCrearBusqueda = new JButton( "Search" );
         botonCrearBusqueda.setActionCommand( CREAR_BUSQUEDA );
         botonCrearBusqueda.addActionListener( this );
         add( botonCrearBusqueda );

@@ -36,15 +36,11 @@ public class PanelMostrarResult extends JPanel
 	
 	private JTextField txtMonster;
 	
-	private JLabel labelObj;
-	
-	private JTextField txtObj;
-	
 	public PanelMostrarResult(Mision m) 
 	{
 		setLayout(new GridLayout(7, 2, 10,10));
 		
-		labelGame = new JLabel( "Entrega: ", SwingConstants.CENTER);
+		labelGame = new JLabel( "Game: ", SwingConstants.CENTER);
         labelGame.setFont( labelGame.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelGame );
         
@@ -53,7 +49,7 @@ public class PanelMostrarResult extends JPanel
         txtGame.setText(m.getGame());
         add( txtGame );
         
-		labelName = new JLabel( "Nombre: ", SwingConstants.CENTER );
+		labelName = new JLabel( "Name: ", SwingConstants.CENTER );
 		labelName.setFont( labelName.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelName );
         
@@ -62,7 +58,7 @@ public class PanelMostrarResult extends JPanel
         txtName.setText(m.getName());
         add( txtName );
         
-		labelPlace = new JLabel( "Lugar: ", SwingConstants.CENTER );
+		labelPlace = new JLabel( "Location: ", SwingConstants.CENTER );
 		labelPlace.setFont( labelPlace.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelPlace );
         
@@ -71,7 +67,7 @@ public class PanelMostrarResult extends JPanel
         txtPlace.setText(m.getPlace());
         add( txtPlace );
         
-		labelDif = new JLabel( "Dificultad: ", SwingConstants.CENTER );
+		labelDif = new JLabel( "Rank: ", SwingConstants.CENTER );
 		labelDif.setFont( labelDif.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelDif );
         
@@ -80,7 +76,7 @@ public class PanelMostrarResult extends JPanel
         txtDif.setText(m.getDificulty());
         add( txtDif );
         
-		labelOrg = new JLabel( "Organizacion: ", SwingConstants.CENTER );
+		labelOrg = new JLabel( "Hub: ", SwingConstants.CENTER );
 		labelOrg.setFont( labelOrg.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelOrg );
         
@@ -89,7 +85,7 @@ public class PanelMostrarResult extends JPanel
         txtOrg.setText(m.getOrganization());
         add( txtOrg );
         
-		labelMonster = new JLabel( "Monstruo: ", SwingConstants.CENTER );
+		labelMonster = new JLabel( "Monster: ", SwingConstants.CENTER );
 		labelMonster.setFont( labelMonster.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelMonster );
         
@@ -98,14 +94,6 @@ public class PanelMostrarResult extends JPanel
         txtMonster.setText(m.getMonster());
         add( txtMonster );
         
-		labelObj = new JLabel( "Objetivo: ", SwingConstants.CENTER );
-		labelObj.setFont( labelObj.getFont( ).deriveFont( Font.PLAIN ) );
-        add( labelObj );
-        
-        txtObj = new JTextField( 2 );
-        txtObj.setEditable(false);
-        txtObj.setText(m.getObjetive());
-        add( txtObj );
         
 	}
 	

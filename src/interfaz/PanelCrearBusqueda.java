@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -24,7 +26,7 @@ public class PanelCrearBusqueda extends JPanel
 	
 	private JLabel labelMonster;
 	
-	private JTextField txtMonster;
+	private Java2sAutoTextField txtMonster;
 	
 	private JLabel labelDif;
 	
@@ -32,38 +34,38 @@ public class PanelCrearBusqueda extends JPanel
 	
 	private JLabel labelPlace;
 	
-	private JTextField txtPlace;
+	private Java2sAutoTextField txtPlace;
 	
-	public PanelCrearBusqueda() 
+	public PanelCrearBusqueda(String[] games, String[] dif, List<String> mon, List<String> loc) 
 	{
 		setLayout(new GridLayout(4, 2, 10, 10));
 		
-		labelGame = new JLabel( "Entrega: ", SwingConstants.CENTER);
+		labelGame = new JLabel( "Game: ", SwingConstants.CENTER);
         labelGame.setFont( labelGame.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelGame );
         
-        comboGame = new JComboBox<String>(Mision.games);
+        comboGame = new JComboBox<String>(games);
         add(comboGame);
         
-        labelMonster = new JLabel( "Monstruo: ", SwingConstants.CENTER );
+        labelMonster = new JLabel( "Monster: ", SwingConstants.CENTER );
         labelMonster.setFont( labelMonster.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelMonster );
         
-        txtMonster = new JTextField( 2 );
+        txtMonster = new Java2sAutoTextField(mon);
         add( txtMonster );
         
-        labelDif = new JLabel( "Dificultad: ", SwingConstants.CENTER);
+        labelDif = new JLabel( "Dificulty: ", SwingConstants.CENTER);
         labelDif.setFont( labelDif.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelDif );
         
-        comboDif = new JComboBox<String>(Mision.difics);
+        comboDif = new JComboBox<String>(dif);
         add(comboDif);
         
-        labelPlace = new JLabel( "Lugar: ", SwingConstants.CENTER);
+        labelPlace = new JLabel( "Place: ", SwingConstants.CENTER);
         labelPlace.setFont( labelPlace.getFont( ).deriveFont( Font.PLAIN ) );
         add( labelPlace );
         
-        txtPlace = new JTextField( 2 );
+        txtPlace = new Java2sAutoTextField(loc);
         add( txtPlace );
     
 	}

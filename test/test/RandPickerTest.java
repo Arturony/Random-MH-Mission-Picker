@@ -24,7 +24,7 @@ public class RandPickerTest extends TestCase
 		mundo.agregarMision("m1", "m1", "p1", "1", "aldea", "slay", Mision.Game.FOUR_ULTIMATE);
 		mundo.serialize();
 	}*/
-	
+	/*
 	public void testGetRandMonsterHeap()
 	{
 		
@@ -52,6 +52,6 @@ public class RandPickerTest extends TestCase
 		duration = endTime - startTime;
 		System.out.println("Obteniendo monstruo random");
 		System.out.println("Tiempo: " + duration + " milisegundos");
-	}
+	}*/
 	
 }

@@ -1,6 +1,7 @@
 package interfaz;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -45,7 +46,7 @@ public class PanelBusqueda extends JPanel
     {
         principal = id;
 
-        panelDatos = new PanelCrearBusqueda();
+        panelDatos = new PanelCrearBusqueda(principal.getGames(), principal.getDificuties(), principal.getMonsters(), principal.getLocations());
         panelBotones = new PanelBotonesBusqueda(this);
         
         setLayout(new BorderLayout());
@@ -68,17 +69,9 @@ public class PanelBusqueda extends JPanel
         String monster = panelDatos.getMonster();
         String dificulty = panelDatos.getDificulty();
         String place = panelDatos.getPlace();
-        if(game.equals(Mision.games[0]))
-        {
-        	game = "";
-        }
-        if(dificulty.equals(Mision.difics[0]))
-        {
-        	dificulty = "";
-        }
+        
         
         principal.showRandMision(game, monster, dificulty, place);
     }
-    
 
 }
