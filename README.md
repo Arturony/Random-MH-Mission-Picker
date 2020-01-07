@@ -6,7 +6,7 @@ You can use it when you don't know what to hunt principally.
 
 The 4 Ultimate, Generations Ultimate and 3 Ultimate are the only that work.
 
-The databases of 4U and GU are from the Gathering Hall Studios. The 3U database are from MonsterHunter3UDatabase repository.
+The databases of 4U and GU are from the Gathering Hall Studios. The 3U database are from MonsterHunter3UDatabase repository. The images are from there also.
 
 Gathering Hall Studios: https://github.com/gatheringhallstudios
 
