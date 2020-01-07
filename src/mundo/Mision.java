@@ -11,7 +11,7 @@ public class Mision implements Comparable<Mision>
 	
 	private String place;
 	
-	private String dificulty;
+	private int dificulty;
 	
 	private String organization;
 	
@@ -19,7 +19,12 @@ public class Mision implements Comparable<Mision>
 	
 	private String game;
 	
-	public Mision(String name, String monster, String place, String dificulty, String organization, String objetive, String game)
+	private String imageMonster;
+	
+	private String imageLocation;
+	
+	public Mision(String name, String monster, String place, int dificulty, String organization, String objetive, String game,
+			String locImg, String monImg)
 	{
 		this.name = name;
 		this.monster = monster;
@@ -28,6 +33,8 @@ public class Mision implements Comparable<Mision>
 		this.organization = organization;
 		this.objetive = objetive;
 		this.game = game;
+		this.imageLocation = locImg;
+		this.imageMonster = monImg;
 	}
 
 	public String getName() {
@@ -42,7 +49,7 @@ public class Mision implements Comparable<Mision>
 		return place;
 	}
 
-	public String getDificulty() {
+	public int getDificulty() {
 		return dificulty;
 	}
 
@@ -66,7 +73,7 @@ public class Mision implements Comparable<Mision>
 		this.place = place;
 	}
 
-	public void setDificulty(String dificulty) {
+	public void setDificulty(int dificulty) {
 		this.dificulty = dificulty;
 	}
 
@@ -84,6 +91,22 @@ public class Mision implements Comparable<Mision>
 
 	public void setGame(String game) {
 		this.game = game;
+	}
+	
+	public String getImageMonster() {
+		return imageMonster;
+	}
+
+	public String getImageLocation() {
+		return imageLocation;
+	}
+
+	public void setImageMonster(String imageMonster) {
+		this.imageMonster = imageMonster;
+	}
+
+	public void setImageLocation(String imageLocation) {
+		this.imageLocation = imageLocation;
 	}
 
 	@Override
@@ -113,16 +136,6 @@ public class Mision implements Comparable<Mision>
 		
 	};
 	
-	public static Comparator<Mision> difComparator = new Comparator<Mision>()
-	{
-
-		@Override
-		public int compare(Mision o1, Mision o2)
-		{
-			return o1.getDificulty().compareTo(o2.getDificulty());
-		}
-		
-	};
 	
 	public static Comparator<Mision> placeComparator = new Comparator<Mision>()
 	{

@@ -54,7 +54,7 @@ public class PanelBotonesResult extends JPanel implements ActionListener
 
         ventana = dcs;
 
-        botonVolver = new JButton( "Volver" );
+        botonVolver = new JButton( "Back" );
         botonVolver.setActionCommand( VOLVER );
         botonVolver.addActionListener( this );
         add( botonVolver );

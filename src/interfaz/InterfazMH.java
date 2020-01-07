@@ -45,10 +45,10 @@ public class InterfazMH extends JFrame
         setDefaultCloseOperation( JFrame.HIDE_ON_CLOSE);
         setLocation (50,50);
         setResizable( false );
-        setBackground( Color.WHITE );
+        getContentPane().setBackground(new java.awt.Color(0, 0, 0));
 
         setTitle( "Random Picker" );
-		setSize ( 400, 350); 
+		setSize ( 400, 475); 
 	}
 	
 	public void showRandMision(String game, String monster, String dificulty, String place)
@@ -60,7 +60,6 @@ public class InterfazMH extends JFrame
 		}
 		else
 		{
-			m.setDificulty(this.mundo.getDificulty(m.getDificulty()));
 			resultado = new PanelResultado(this, m);
 			this.remove(busqueda);
 			this.add(resultado, BorderLayout.CENTER);

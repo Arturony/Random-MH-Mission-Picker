@@ -142,7 +142,7 @@ public class SQLiteDBManager
 			}
 			String queryM = "select _id as mID from monsters where name like '%" + monster + "%'";
 			String queryJM = "select quest_id from (" + queryM + ") a inner join monster_to_quest m on a.mID = m.monster_id";
-			String queryL = "select _id as lID from locations where name like '%" + place + "%'";
+			String queryL = "select _id as lID from locations where name like '%" + place + "%' order by random() limit 1";
 			String queryD = "select _id as qID from quests where location_id = (" + queryL + ") ";
 			String queryQ = "";
 			String queryE ="";
@@ -172,9 +172,9 @@ public class SQLiteDBManager
 			String fullQ = "select * from quests where _id = (" + queryQ + ")"; 
 			this.stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery(fullQ);
-			ans = new Mision(rs.getString("name"), rs.getInt("_id")+"", rs.getInt("location_id")+"", rs.getInt("stars")+"", rs.getString("hub"), " " , game);
-			String mon = getMonster(ans.getMonster());
-			String pla = getPlace(ans.getPlace());
+			ans = new Mision(rs.getString("name"), rs.getInt("_id")+"", rs.getInt("location_id")+"", rs.getInt("stars"), rs.getString("hub"), " " , game, "", "");
+			String mon = getMonster(ans.getMonster(), ans);
+			String pla = getPlace(ans.getPlace(), ans);
 			ans.setMonster(mon);
 			ans.setPlace(pla);
 		} 
@@ -312,19 +312,27 @@ public class SQLiteDBManager
 		return ans;
 	}
 	
-	private String getMonster(String idQuest)
+	private String getMonster(String idQuest, Mision m)
 	{
 		String ans = "";
 		try 
 		{		
+			String imgs = "";
 			this.stmt = c.createStatement();
 			String j = "select monster_id from monster_to_quest where quest_id = '" + idQuest + "'";
-			String q = "select name from monsters where _id = (" + j + ")";
+			String q = "select name, icon_name from monsters m inner join (" + j + ") m1 on m._id = m1.monster_id";
 			ResultSet rs = stmt.executeQuery(q);
 			while(rs.next())
 			{
-				ans += rs.getString("name") + "  ";
+				ans += rs.getString("name") + ", ";
+				if(rs.getString("icon_name").contains(".png"))
+				{
+					imgs += rs.getString("icon_name") + ",";
+				}
+				else
+					imgs += rs.getString("icon_name") + ".png,";							
 			}
+			m.setImageMonster(imgs);
 		} 
 		catch (Exception e) 
 		{
@@ -333,15 +341,22 @@ public class SQLiteDBManager
 		return ans;
 	}
 	
-	private String getPlace(String id)
+	private String getPlace(String id, Mision m)
 	{
 		String ans = "";
 		try 
 		{		
 			this.stmt = c.createStatement();
-			String q = "SELECT name from locations where _id = '" + id + "'";
+			String q = "SELECT name, map from locations where _id = '" + id + "'";
 			ResultSet rs = stmt.executeQuery(q);
 			ans = rs.getString("name");
+			if(m.getGame().equals("Generations Ultimate"))
+			{
+				m.setImageLocation("loc_"+rs.getString("map"));
+			}
+			else
+				m.setImageLocation(rs.getString("map"));
+			
 		} 
 		catch (Exception e) 
 		{
